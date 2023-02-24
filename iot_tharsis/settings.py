@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ivu^n^im@v0#-(i3tugv@+0e*y*qd4*y*o2=e+t3bl(la$8w0w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '192.168.1.33']
+#ALLOWED_HOSTS = ['127.0.0.1', '192.168.1.33']
 
 # Application definition
 
@@ -36,6 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
+    'channels-redis',
+    'app_tharsis'
 ]
 
 MIDDLEWARE = [
@@ -53,7 +56,10 @@ ROOT_URLCONF = 'iot_tharsis.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'app_tharsis/templates')
+
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +73,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'iot_tharsis.wsgi.application'
+ASGI_APPLICATION = 'iot_tharsis.asgi.application'
+
 
 
 # Database
@@ -116,11 +124,15 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'app_tharsis/static')
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #Broker mqtt
-BROKER_ADDRESS = "broker.example.com"
-BROKER_PORT = 1883
+#BROKER_ADDRESS = "broker.example.com"
+#BROKER_PORT = 1883

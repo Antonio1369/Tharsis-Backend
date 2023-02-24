@@ -14,7 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from app_tharsis.views import data_view
 
 admin.site.site_header = "Tharsis Platform "
 admin.site.site_title = "IOT Platform Tharsis"
@@ -23,6 +24,8 @@ admin.site.index_title = "Bienvenido a la Plataforma de Tharsis"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', include('app_tharsis.urls')),
-    
+    path('data/', data_view, name='data_view'),
+    path('', include('app_tharsis.urls'))
+
 ]
+
