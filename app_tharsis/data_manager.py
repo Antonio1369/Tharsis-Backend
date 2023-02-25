@@ -4,17 +4,18 @@ import RPi.GPIO as GPIO
 import paho.mqtt.publish as publish
 
 class BluetoothManager:
-    def __init__(self, address, mqtt_topic):
+    def __init__(self, address):
         self.address = address
-        self.mqtt_topic = mqtt_topic
+        #self.mqtt_topic = mqtt_topic
 
     def read_data(self):
         sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
         sock.connect((self.address, 1))
         data = sock.recv(1024)
-        sock.close()
+        #sock.close()
+        return data
         # publicar los datos en el tema MQTT
-        publish.single(self.mqtt_topic, payload=data, hostname="broker.example.com")
+        #publish.single(self.mqtt_topic, payload=data, hostname="broker.example.com")
 
 class SerialManager:
     def __init__(self, port, baud_rate, mqtt_topic):
