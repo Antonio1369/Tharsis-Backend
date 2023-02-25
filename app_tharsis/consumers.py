@@ -12,13 +12,16 @@ class GraphConsumer(AsyncWebsocketConsumer):
         bt = BluetoothManager(address = "EC:94:CB:6F:3F:16" )
         while True:
             data = bt.read_data()
-            data = str(data.decode())
+            data = data.decode().split(",")
             print(data)
-
-            await self.send(json.dumps({'value': int(data)}))
-            #await self.send(json.dumps({'value2': data}))
+            print(len(data))
+            if len(data) >1:
+                await self.send(json.dumps({'value': float(data[1])})
+                await sleep(1)
+            #await self.send(json.dumps({'value2': int(data)}))
+            else: 
+                pass
 
         
-            await sleep(1)
             
 

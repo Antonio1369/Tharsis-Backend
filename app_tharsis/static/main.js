@@ -1,38 +1,90 @@
-var ctx = document.getElementById('myChart').getContext('2d');
+// Chart for plot 1
+var ctx1 = document.getElementById('myChart').getContext('2d');
 
-var graphData = {
-
+var graphData1 = {
     type: 'line',
     data: {
-      labels: ['0','10','20','30','40','50','60','70','80','90','100','110','120','130','140','150','160','170','180'],
-      datasets: [{
-        label: 'ECG THARSIS',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-            'rgba(200,198,50,0.5)'
-        ],
-        borderColor: "#FF0000",
-        borderWidth: 3
-      }]
+        labels: ['0','10','20','30','40','50'],
+        datasets: [{
+            label: 'ECG THARSIS',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(200,198,50,15)'
+            ],
+            borderColor: "#FFFFFF",
+            borderWidth: 3
+        }]
+    },
+      options: {
+        scales: {
+            xAxes: [{
+                ticks: {
+                    fontColor: '#FFFFFF',  // change the color of the axis text
+                },
+                gridLines: {
+                    color: 'rgba(255,0,0,1)', // change the color of the x axis grid lines
+                }
+            }],
+            yAxes: [{
+                ticks: {
+                    fontColor: '#FFFFFF', // change the color of the axis text
+                },
+                gridLines: {
+                    color: 'rgba(255,255,255,5)', // change the color of the y axis grid lines
+                }
+            }]
+        }
+    }
+}
+    
+
+
+var myChart = new Chart(ctx1, graphData1);
+
+// Chart for plot 2
+var ctx2 = document.getElementById('myChart2').getContext('2d');
+
+var graphData2 = {
+    type: 'line',
+    data: {
+        labels: ['0','10','20','30','40','50'],
+        datasets: [{
+            label: 'Second Dataset',
+            data: [5, 10, 8, 15, 25, 20],
+            backgroundColor: [
+                'rgba(100,149,237,0.5)'
+            ],
+            borderColor: "#0000FF",
+            borderWidth: 3
+        }]
     },
     options: {}
 }
 
-var myChart = new Chart(ctx,graphData);
+var myChart2 = new Chart(ctx2, graphData2);
 
+// WebSocket code
 var socket = new WebSocket('ws://localhost:8000/ws/graph/');
 
-socket.onmessage = function (e){
+socket.onmessage = function (e) {
     var djangoData = JSON.parse(e.data);
     console.log(djangoData);
-    var newGraphData = graphData.data.datasets[0].data;
-    newGraphData.shift();
-    newGraphData.push(djangoData.value);
+    document.querySelector('#app').innerText = djangoData.value;
 
-    graphData.data.datasets[0].data = newGraphData;
-    myChart.update()
 
-    document.querySelector('#app').innerHTML =djangoData.value;
+    // Modify dataset for plot 1
+    var newGraphData1 = graphData1.data.datasets[0].data;
+    newGraphData1.shift();
+    newGraphData1.push(djangoData.value);
 
-    
+    graphData1.data.datasets[0].data = newGraphData1;
+    myChart1.update();
+
+    // Modify dataset for plot 2
+    var newGraphData2 = graphData2.data.datasets[0].data;
+    newGraphData2.shift();
+    newGraphData2.push(djangoData.value2 * 2);
+
+    graphData2.data.datasets[0].data = newGraphData2;
+    myChart2.update();
 }
