@@ -1,5 +1,5 @@
 // Chart for plot 1
-var ctx1 = document.getElementById('myChart').getContext('2d');
+var ctx1 = document.getElementById('myChart1').getContext('2d');
 
 var graphData1 = {
     type: 'line',
@@ -39,7 +39,7 @@ var graphData1 = {
     
 
 
-var myChart = new Chart(ctx1, graphData1);
+var myChart1 = new Chart(ctx1, graphData1);
 
 // Chart for plot 2
 var ctx2 = document.getElementById('myChart2').getContext('2d');
@@ -69,7 +69,6 @@ var socket = new WebSocket('ws://localhost:8000/ws/graph/');
 socket.onmessage = function (e) {
     var djangoData = JSON.parse(e.data);
     console.log(djangoData);
-    document.querySelector('#app').innerText = djangoData.value;
 
 
     // Modify dataset for plot 1
@@ -83,8 +82,10 @@ socket.onmessage = function (e) {
     // Modify dataset for plot 2
     var newGraphData2 = graphData2.data.datasets[0].data;
     newGraphData2.shift();
-    newGraphData2.push(djangoData.value2 * 2);
+    newGraphData2.push(djangoData.value * 2);
 
     graphData2.data.datasets[0].data = newGraphData2;
     myChart2.update();
+    document.querySelector('#app').innerText = djangoData.value;
+
 }

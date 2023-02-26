@@ -9,15 +9,15 @@ from app_tharsis.data_manager import BluetoothManager
 class GraphConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         await self.accept()
-        bt = BluetoothManager(address = "EC:94:CB:6F:3F:16" )
+        #bt = BluetoothManager(address = "EC:94:CB:6F:3F:16" )
         while True:
-            data = bt.read_data()
-            data = data.decode().split(",")
-            print(data)
-            print(len(data))
-            if len(data) >1:
-                await self.send(json.dumps({'value': float(data[1])}))
-            #await self.send(json.dumps({'value2': int(data)}))
+            #data = bt.read_data()
+            #data = data.decode().split(",")
+            #print(data)
+            #print(len(data))
+            #if len(data) >1:
+            #    await self.send(json.dumps({'value': float(data[1])}))
+            await self.send(json.dumps({'value': randint(0,100)}))
         
             await sleep(1)
 
