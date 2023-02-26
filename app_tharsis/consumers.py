@@ -16,12 +16,9 @@ class GraphConsumer(AsyncWebsocketConsumer):
             print(data)
             print(len(data))
             if len(data) >1:
-                await self.send(json.dumps({'value': float(data[1])})
-                await sleep(1)
+                await self.send(json.dumps({'value': float(data[1])}))
             #await self.send(json.dumps({'value2': int(data)}))
-            else: 
-                pass
+        
+            await sleep(1)
 
         
-            
-
