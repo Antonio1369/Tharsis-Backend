@@ -25,7 +25,8 @@ class SerialManager:
         #self.mqtt_topic = mqtt_topic
 
     def read_data(self):
-        data = self.serial.readline().decode()
+        MyMPU = self.serial.readline().decode('utf-8').rstrip()
+        data = [float(word) for word in MyMPU.split()]
         return data
         # publicar los datos en el tema MQTT
         #publish.single(self.mqtt_topic, payload=data, hostname="broker.example.com")

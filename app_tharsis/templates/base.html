@@ -20,8 +20,8 @@
     .container {
       width: 30%;
       height: 30%;
-      background-color: rgba(133, 4, 4, 0.5);
-      border-radius: 20px 0 30px 0;
+      background-color: rgba(133, 4, 4, 0.7);
+      border-radius: 20px 20px 30px 20px;
 
 
     }
@@ -33,52 +33,53 @@
 
 }
 .corazon {
-  width: 30%;
-  height: 30%;
+  width: 5%;
+  height: 5%;
 
 }
     .container2 {
-        background-color: rgba(82, 38, 33, 0.5);
-        border-radius: 20px 0 30px 0;
+      align: center;
+      width: 30%;
+      height: 120%;
+        background-color: rgba(23, 10, 25, 0.7);
+        border-radius: 20px 20px 30px 20px;
 
     }
+.white-text {
+  color: #FFFFFF;
+}
   </style>
 
   </head>
   <body>
-    <div></div>
-    <div class="container" style="margin-right: 50px;">
-        <div class="row" style="text-align: right;">
-            <div class="col-12 mt-6">
-                <canvas id="myChart1" width="0.05" height="100"></canvas>
-                <canvas id="myChart2" width="0.05" height="100"></canvas>
-
-            </div>
-
-
-            </div>
-
+  <div class="container" style="margin-right: 30px;">
+  <div class="row" style="text-align: center;">
+    <div class="col-12">
+      <canvas id="myChart1" width="0.1" height="100"></canvas>
+      <canvas id="myChart2" width="0.1" height="100"></canvas>
     </div>
-    <div class="container2"  style="margin-center: 50px;">
-        <div class="row" >
-        <h1>PPG: </h1>
-                <h1 id="PPG">{{ text }}</h1>
-                <img src="{% static 'corazon.gif' %}" class="corazon" >
-                <h1>OXIGENACIÓN: </h1>
-                <img src="{% static 'corazon.gif' %}" class="corazon" >
-                <h1 id="oxigeno">{{ text }}</h1>
-                <h1>BPM: </h1>
-                <h1 id="BPM">{{ text }}</h1>
-                <h1>ACELERACION: </h1>
-                <h1 id="aceleracion">{{ text }}</h1>
-                <h1>VELOCIDAD: </h1>
-                <h1 id="velocidad">{{ text }}</h1>
-      
-        </div>
-            
+    
+  </div>
+</div>
+
+    <div class="container2"  style="position: absolute; top: 0; left: 570px;">
+    <div class="col-12 white-text" style="text-align: center;">
+      <h1>PPG: 
+      <h1 id="PPG">{{ text }}</h1></h1>
+      <img src="{% static 'corazon.gif' %}" class="corazon" >
+      <h1>OXIGENACIÓN: </h1>
+      <img src="{% static 'corazon.gif' %}" class="corazon" >
+      <h1 id="oxigeno">{{ text }}</h1>
+      <h1>BPM: </h1>
+      <h1 id="BPM">{{ text }}</h1>
+      <h1>ACELERACION: </h1>
+      <h1 id="aceleracion">{{ text }}</h1>
+      <h1>VELOCIDAD: </h1>
+      <h1 id="velocidad">{{ text }}</h1>
+    </div>            
         </div>
 
-    </div>
+    
   <script src="{% static 'main.js' %}">
       
   </script>
