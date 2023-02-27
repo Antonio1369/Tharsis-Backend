@@ -74,7 +74,7 @@ socket.onmessage = function (e) {
     // Modify dataset for plot 1
     var newGraphData1 = graphData1.data.datasets[0].data;
     newGraphData1.shift();
-    newGraphData1.push(djangoData.value);
+    newGraphData1.push(djangoData.PPG);
 
     graphData1.data.datasets[0].data = newGraphData1;
     myChart1.update();
@@ -82,7 +82,7 @@ socket.onmessage = function (e) {
     // Modify dataset for plot 2
     var newGraphData2 = graphData2.data.datasets[0].data;
     newGraphData2.shift();
-    newGraphData2.push(djangoData.value * 2);
+    newGraphData2.push(djangoData.PPG * 2);
 
     graphData2.data.datasets[0].data = newGraphData2;
     myChart2.update();
