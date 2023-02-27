@@ -86,6 +86,12 @@ socket.onmessage = function (e) {
 
     graphData2.data.datasets[0].data = newGraphData2;
     myChart2.update();
-    document.querySelector('#app').innerText = djangoData.value;
+    document.querySelector('#PPG').innerText = djangoData.PPG;
+    document.querySelector('#oxigeno').innerText = djangoData.oxigeno;
+    document.querySelector('#BPM').innerText = djangoData.BPM;
+    document.querySelector('#aceleracion').innerText = djangoData.aceleracion;
+    document.querySelector('#velocidad').innerText = djangoData.velocidad;
+
+
 
 }
