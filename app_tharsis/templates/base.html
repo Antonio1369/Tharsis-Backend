@@ -20,7 +20,9 @@
     .container {
       width: 30%;
       height: 30%;
-      background-color: rgba(82, 38, 33, 0.5);
+      background-color: rgba(133, 4, 4, 0.5);
+      border-radius: 20px 0 30px 0;
+
 
     }
 
@@ -30,11 +32,16 @@
   text-align: right
 
 }
-.corazon{
-  width: 50%;
-  height: 50%;
+.corazon {
+  width: 30%;
+  height: 30%;
 
 }
+    .container2 {
+        background-color: rgba(82, 38, 33, 0.5);
+        border-radius: 20px 0 30px 0;
+
+    }
   </style>
 
   </head>
@@ -47,10 +54,18 @@
                 <canvas id="myChart2" width="0.05" height="100"></canvas>
 
             </div>
-                <h1>PPG: </h1>
+
+
+            </div>
+
+    </div>
+    <div class="container2"  style="margin-center: 50px;">
+        <div class="row" >
+        <h1>PPG: </h1>
                 <h1 id="PPG">{{ text }}</h1>
                 <img src="{% static 'corazon.gif' %}" class="corazon" >
                 <h1>OXIGENACIÓN: </h1>
+                <img src="{% static 'corazon.gif' %}" class="corazon" >
                 <h1 id="oxigeno">{{ text }}</h1>
                 <h1>BPM: </h1>
                 <h1 id="BPM">{{ text }}</h1>
@@ -58,13 +73,6 @@
                 <h1 id="aceleracion">{{ text }}</h1>
                 <h1>VELOCIDAD: </h1>
                 <h1 id="velocidad">{{ text }}</h1>
-
-            </div>
-
-    </div>
-    <div class="container2">
-        <div class="row" style="text-align: right;">
-        <h1>BPM: </h1>
       
         </div>
             
