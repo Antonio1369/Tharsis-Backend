@@ -9,23 +9,23 @@ from app_tharsis.data_manager import BluetoothManager, SerialManager, PinManager
 class GraphConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         await self.accept()
-        bt = BluetoothManager(address = "EC:94:CB:6F:3F:16" )
-        ser = SerialManager('/dev/ttyUSB0', 115200, 8, 'N', 1)
-        pin = PinManager()
+        #bt = BluetoothManager(address = "EC:94:CB:6F:3F:16" )
+        #ser = SerialManager('/dev/ttyUSB0', 115200, 8, 'N', 1)
+        #pin = PinManager()
         while True:
 
             #BLUETOOTH PROCESSING
-            data_bluetooth = bt.read_data()
-            data_bluetooth = data_bluetooth.decode().split(",")
-            print(data_bluetooth)
-            print(len(data_bluetooth))
+            #data_bluetooth = bt.read_data()
+            #data_bluetooth = data_bluetooth.decode().split(",")
+            #print(data_bluetooth)
+            #print(len(data_bluetooth))
             
             
             #SERIAL PROCESSING
-            data_serial = ser.read_data()
+            #data_serial = ser.read_data()
 
             #PIN PROCESSING
-            data_pin = pin.read_data()
+            #data_pin = pin.read_data()
             await self.send(json.dumps({'PPG': randint(0,100),
                                         'oxigeno': randint(0,100),
                                         'bpm' : randint(0,100),
@@ -33,8 +33,8 @@ class GraphConsumer(AsyncWebsocketConsumer):
                                         'velocidad': randint(0,100),
                                         }))
             
-            if len(data_bluetooth) >1:
-                await self.send(json.dumps({'value': float(data_bluetooth[1])}))
+            #if len(data_bluetooth) >1:
+            #    await self.send(json.dumps({'value': float(data_bluetooth[1])}))
         
             await sleep(1)
 
