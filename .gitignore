@@ -1,0 +1,4 @@
+venv
+app_tharsis/__pycache__
+iot_tharsis/__pycache__/
+.idea

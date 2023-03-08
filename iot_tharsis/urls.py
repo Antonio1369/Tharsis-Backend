@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from app_tharsis.views import data_view
+#from app_tharsis.views import data_view
 
 admin.site.site_header = "Tharsis Platform "
 admin.site.site_title = "IOT Platform Tharsis"
@@ -24,7 +24,7 @@ admin.site.index_title = "Bienvenido a la Plataforma de Tharsis"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('data/', data_view, name='data_view'),
+    #path('data/', data_view, name='data_view'),
     path('', include('app_tharsis.urls'))
 
 ]

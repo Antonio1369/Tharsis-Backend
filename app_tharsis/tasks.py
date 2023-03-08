@@ -1,6 +1,6 @@
-from celery import shared_task
+#from celery import shared_task
 from app_tharsis.data_manager import BluetoothManager, SerialManager, PinManager
-import paho.mqtt.publish as publish
+#import paho.mqtt.publish as publish
 
 @shared_task
 def bluetooth_task():
@@ -8,7 +8,7 @@ def bluetooth_task():
     while True:
         data = bt_manager.read_data()
         # publicar los datos en un tema MQTT
-        publish.single("bluetooth_data", payload=data, hostname="broker.example.com")
+#        publish.single("bluetooth_data", payload=data, hostname="broker.example.com")
 
 @shared_task
 def serial_task():
@@ -16,7 +16,7 @@ def serial_task():
     while True:
         data = serial_manager.read_data()
         # publicar los datos en un tema MQTT
-        publish.single("serial_data", payload=data, hostname="broker.example.com")
+#        publish.single("serial_data", payload=data, hostname="broker.example.com")
 
 @shared_task
 def pin_task():
@@ -24,4 +24,4 @@ def pin_task():
     while True:
         data = pin_manager.read_data()
         # publicar los datos en un tema MQTT
-        publish.single("pin_data", payload=data, hostname="broker.example.com")
+#        publish.single("pin_data", payload=data, hostname="broker.example.com")
