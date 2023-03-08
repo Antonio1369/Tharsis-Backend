@@ -28,7 +28,7 @@ class GraphConsumer(WebsocketConsumer):
             #data_pin = pin.read_data()
             self.send(json.dumps({'PPG': randint(0,100),
                                         'oxigeno': randint(0,100),
-                                        'bpm' : randint(0,100),
+                                        'BPM' : randint(0,100),
                                         'aceleracion': randint(0,100),
                                         'velocidad': randint(0,100),
                                         }))
@@ -36,6 +36,6 @@ class GraphConsumer(WebsocketConsumer):
             #if len(data_bluetooth) >1:
             #    await self.send(json.dumps({'value': float(data_bluetooth[1])}))
         
-            sleep(1)
+            sleep(2)
 
         

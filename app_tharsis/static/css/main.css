@@ -1,0 +1,397 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+}
+.v1_4 {
+  width: 100%;
+  height: 1117px;
+  background: rgb(198, 165, 165, 1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.logo-tharsis {
+  width: 239px;
+  height: 97px;
+  background: url("../images/v1_7.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 44px;
+  left: 18px;
+  overflow: hidden;
+}
+.dashboard-text {
+  width: 81px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 286px;
+  left: 91px;
+  font-family: Ubuntu;
+  font-weight: Medium;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+}
+.box-medical {
+  width: 87px;
+  height: 25px;
+  background: rgba(232,104,75,1);
+  opacity: 1;
+  position: absolute;
+  top: 320px;
+  left: 99px;
+  border-radius: 5px;
+}
+.medical-link {
+  width: 59px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 320px;
+  left: 106px;
+  font-family: Ubuntu;
+  font-weight: Medium;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+}
+.streaming-link {
+  width: 77px;
+  color: rgba(232,104,75,1);
+  position: absolute;
+  top: 384px;
+  left: 91px;
+  font-family: Ubuntu;
+  font-weight: Medium;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+}
+.rover-link {
+  width: 44px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 350px;
+  left: 112px;
+  font-family: Ubuntu;
+  font-weight: Medium;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+}
+.box-datos-general {
+  width: 83%;
+  height: 100%;
+  background: rgba(65, 17, 14, 699999988079071);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 270px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  overflow: hidden;
+}
+.box-graficas-ecg-ppg {
+  width: 62%;
+  height: 600px;
+  background: rgb(235, 106, 106, 0.4);
+  opacity: 1;
+  position: absolute;
+  top: 90px;
+  left: 419px;
+  border-radius: 15px;
+}
+.box-hrv {
+  width: 20%;
+  height: 285px;
+  background: rgba(235, 106, 106, 0.4);
+  opacity: 1;
+  position: absolute;
+  top: 731px;
+  left: 420px;
+  border-radius: 15px;
+}
+.box-bpm {
+  width: 20%;
+  height: 285px;
+  background: rgba(235, 106, 106, 0.4);
+  opacity: 1;
+  position: absolute;
+  top: 731px;
+  left: 990px;
+  border-radius: 15px;
+}
+.box-spo2 {
+  width: 20%;
+  height: 285px;
+  background: rgba(235, 106, 106, 0.4);
+  opacity: 1;
+  position: absolute;
+  top: 731px;
+  left: 1560px;
+  border-radius: 15px;
+}
+.electrocardiograma-text {
+  width: 275px;
+  color: rgba(232,104,75,1);
+  position: absolute;
+  top: 110px;
+  left: 487px;
+  font-family: Ubuntu;
+  font-weight: Bold;
+  font-size: 24px;
+  opacity: 1;
+  text-align: left;
+}
+.pletismografía-text {
+  width: 246px;
+  color: rgba(232,104,75,1);
+  position: absolute;
+  top: 391px;
+  left: 487px;
+  font-family: Ubuntu;
+  font-weight: Bold;
+  font-size: 24px;
+  opacity: 1;
+  text-align: left;
+}
+.hrv-text {
+  width: 304px;
+  color: rgb(255, 255, 255, 1);
+  position: absolute;
+  top: 760px;
+  left: 510px;
+  font-family: Ubuntu;
+  font-weight: Bold;
+  font-size: 24px;
+  opacity: 1;
+  text-align: left;
+}
+.bpm-text {
+  width: 88px;
+  color: rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 756px;
+  left: 1170px;
+  font-family: Ubuntu;
+  font-weight: Bold;
+  font-size: 28px;
+  opacity: 1;
+  text-align: left;
+}
+.spo2-text{
+  width: 77px;
+  color: rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 749px;
+  left: 1750px;
+  font-family: Ubuntu;
+  font-weight: Bold;
+  font-size: 30px;
+  opacity: 1;
+  text-align: left;
+}
+.v1_37 {
+  width: 611px;
+  height: 409px;
+  background: url("../images/v1_37.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 78px;
+  left: 493px;
+  overflow: hidden;
+}
+.v1_38 {
+  width: 292px;
+  height: 409px;
+  background: url("../images/v1_38.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 78px;
+  left: 830px;
+  overflow: hidden;
+}
+.v1_39 {
+  width: 342px;
+  height: 147px;
+  background: url("../images/v1_39.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 470px;
+  left: 457px;
+  overflow: hidden;
+}
+.v1_40 {
+  width: 342px;
+  height: 147px;
+  background: url("../images/v1_40.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 475px;
+  left: 753px;
+  overflow: hidden;
+}
+.v1_41 {
+  width: 342px;
+  height: 147px;
+  background: url("../images/v1_41.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 477px;
+  left: 879px;
+  overflow: hidden;
+}
+.hrv-img {
+  width: 128px;
+  height: 128px;
+  background: url("../images/v1_46.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 836px;
+  left: 450px;
+  overflow: hidden;
+}
+.bpm-img {
+  width: 128px;
+  height: 128px;
+  background: url("../images/v1_42.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 836px;
+  left: 1150px;
+  overflow: hidden;
+}
+.spo2-img {
+  width: 128px;
+  height: 128px;
+  background: url("../images/v1_47.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 836px;
+  left: 1610px;
+  overflow: hidden;
+}
+.hrv-variable {
+  width: 57px;
+  color: rgb(255, 255, 255, 1);
+  position: absolute;
+  top: 871px;
+  left: 640px;
+  font-family: Ubuntu;
+  font-weight: Bold;
+  font-size: 50px;
+  opacity: 1;
+  text-align: left;
+}
+.bpm-variable {
+  width: 57px;
+  color: rgba(255, 250, 249, 1);
+  position: absolute;
+  top: 871px;
+  left: 1185px;
+  font-family: Ubuntu;
+  font-weight: Bold;
+  font-size: 50px;
+  opacity: 1;
+  text-align: left;
+}
+.spo2-variable {
+  width: 57px;
+  color: rgb(255, 250, 249, 1);
+  position: absolute;
+  top: 871px;
+  left: 1800px;
+  font-family: Ubuntu;
+  font-weight: Bold;
+  font-size: 50px;
+  opacity: 1;
+  text-align: left;
+}
+.dashboard-icono {
+  width: 25px;
+  height: 25px;
+  background: url("../images/v1_22.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 285px;
+  left: 56px;
+  overflow: hidden;
+}
+.logo-uni {
+  width: 215px;
+  height: 93px;
+  background: url("../images/v1_23.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 971px;
+  left: 28px;
+  overflow: hidden;
+}
+.streaming-icono {
+  width: 25px;
+  height: 25px;
+  background: url("../images/v1_197.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 381px;
+  left: 56px;
+  overflow: hidden;
+}
+.dashboard-up-icono {
+  width: 12px;
+  height: 12px;
+  background: url("../images/v1_199.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 294px;
+  left: 205px;
+  overflow: hidden;
+}
+.myChart2{
+  width: auto;
+  max-height: fit-content;
+}

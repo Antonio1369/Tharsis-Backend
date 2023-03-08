@@ -15,26 +15,7 @@ var graphData1 = {
             borderWidth: 3
         }]
     },
-      options: {
-        scales: {
-            xAxes: [{
-                ticks: {
-                    fontColor: '#FFFFFF',  // change the color of the axis text
-                },
-                gridLines: {
-                    color: 'rgba(255,0,0,1)', // change the color of the x axis grid lines
-                }
-            }],
-            yAxes: [{
-                ticks: {
-                    fontColor: '#FFFFFF', // change the color of the axis text
-                },
-                gridLines: {
-                    color: 'rgba(255,255,255,5)', // change the color of the y axis grid lines
-                }
-            }]
-        }
-    }
+      options: {}
 }
     
 
@@ -74,7 +55,7 @@ socket.onmessage = function (e) {
     // Modify dataset for plot 1
     var newGraphData1 = graphData1.data.datasets[0].data;
     newGraphData1.shift();
-    newGraphData1.push(djangoData.value);
+    newGraphData1.push(djangoData.PPG);
 
     graphData1.data.datasets[0].data = newGraphData1;
     myChart1.update();
@@ -82,7 +63,7 @@ socket.onmessage = function (e) {
     // Modify dataset for plot 2
     var newGraphData2 = graphData2.data.datasets[0].data;
     newGraphData2.shift();
-    newGraphData2.push(djangoData.value * 2);
+    newGraphData2.push(djangoData.PPG * 2);
 
     graphData2.data.datasets[0].data = newGraphData2;
     myChart2.update();
