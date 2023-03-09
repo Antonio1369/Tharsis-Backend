@@ -1,4 +1,6 @@
 // Chart for plot 1
+
+
 var ctx1 = document.getElementById('myChart1').getContext('2d');
 
 var graphData1 = {
@@ -9,9 +11,9 @@ var graphData1 = {
             label: 'ECG THARSIS',
             data: [12, 19, 3, 5, 2, 3],
             backgroundColor: [
-                'rgba(200,198,50,15)'
+                'rgba(100,55,5,0.5)'
             ],
-            borderColor: "#FFFFFF",
+            borderColor: "#0F00FF",
             borderWidth: 3
         }]
     },
@@ -30,7 +32,7 @@ var graphData2 = {
     data: {
         labels: ['0','10','20','30','40','50'],
         datasets: [{
-            label: 'Second Dataset',
+            label: 'OXIGENACION',
             data: [5, 10, 8, 15, 25, 20],
             backgroundColor: [
                 'rgba(100,149,237,0.5)'

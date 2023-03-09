@@ -9,6 +9,7 @@
     <meta name="author" content="J.Bocanegra">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- ========== Title ========== -->
     <title> Dashboard Tharsis</title>
     <!-- ========== Favicon Ico ========== -->
@@ -155,6 +156,8 @@
                         <div class="project-content">
                             <div class="project-image">
                                 <figure>
+                                        <canvas id="myChart1" class="myChart1"></canvas>
+
                                     <img src="{% static 'images/v1_37.png' %}" class="image">
                                 </figure>
                             </div>
@@ -165,6 +168,8 @@
                         <div class="project-content">
                             <div class="project-image">
                                 <figure>
+                                    <canvas id="myChart2" class="myChart2"></canvas>
+
                                     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                                         width="342.000000pt" height="147.000000pt" viewBox="0 0 342.000000 147.000000"
                                         preserveAspectRatio="xMidYMid meet">

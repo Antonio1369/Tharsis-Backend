@@ -2,7 +2,7 @@ from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
 import json
 from random import randint
 from time import sleep
-from asyncio import sleep
+#from asyncio import sleep
 #from app_tharsis.data_manager import BluetoothManager, SerialManager, PinManager
 
 
@@ -36,6 +36,7 @@ class GraphConsumer(WebsocketConsumer):
             #if len(data_bluetooth) >1:
             #    await self.send(json.dumps({'value': float(data_bluetooth[1])}))
         
-            sleep(2)
+            sleep(1)
+        
 
         
