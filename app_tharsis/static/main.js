@@ -72,8 +72,13 @@ socket.onmessage = function (e) {
     document.querySelector('#PPG').innerText = djangoData.PPG;
     document.querySelector('#oxigeno').innerText = djangoData.oxigeno;
     document.querySelector('#BPM').innerText = djangoData.BPM;
-    document.querySelector('#aceleracion').innerText = djangoData.aceleracion;
-    document.querySelector('#velocidad').innerText = djangoData.velocidad;
+    document.querySelector('#giroscopio1').innerText = djangoData.giroscopio1;
+    document.querySelector('#giroscopio2').innerText = djangoData.giroscopio2;
+    document.querySelector('#giroscopio3').innerText = djangoData.giroscopio3;
+    document.querySelector('#aceleracion1').innerText = djangoData.aceleracion1;
+    document.querySelector('#aceleracion2').innerText = djangoData.aceleracion2;
+    document.querySelector('#aceleracion3').innerText = djangoData.aceleracion3;
+
 
 
 

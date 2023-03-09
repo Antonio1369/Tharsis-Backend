@@ -156,7 +156,7 @@
                         <div class="project-content">
                             <div class="project-image">
                                 <figure>
-                                        <canvas id="myChart1" class="myChart1"></canvas>
+                                        <canvas id="myChart1" class="myChart1" width="1000"></canvas>
 
                                     <img src="{% static 'images/v1_37.png' %}" class="image">
                                 </figure>
@@ -390,19 +390,20 @@
                             <div style="width: 110%;">
                             <div class="project-image">
                                 <h3>GYROSCOPE</h3>
-                                <p>
-                                    X:0.76 rad/s <br>
-                                    Y:0.54 rad/s <br>
-                                    Z:-0.18 rad/s 
-                                </p>
+
+                                    <p>X: <span id="giroscopio1" style="display: inline-block;">{{ text }}</span> rad/s</p>
+                                    <p>Y: <span id="giroscopio2" style="display: inline-block;">{{ text }}</span> rad/s</p>
+                                    <p>Z: <span id="giroscopio3" style="display: inline-block;">{{ text }}</span> rad/s</p>
+
                             </div>
                         </div>
                         <div  style="width: 110%;">
                             <div class="project-image" >
                                 <h3>ACCELEROMETER</h3>
-                                    X:-8.58 m/s2 <br>
-                                    Y:-2.28 m/s2 <br>
-                                    Z:0.92 m/s2 <br>
+                                    <p>X: <span id="aceleracion1" style="display: inline-block;">{{ text }}</span> m/s2</p>
+                                    <p>Y: <span id="aceleracion2" style="display: inline-block;">{{ text }}</span> m/s2</p>
+                                    <p>Z: <span id="aceleracion3" style="display: inline-block;">{{ text }}</span> m/s2</p>
+
                             </div>
                         </div>
                         </div>

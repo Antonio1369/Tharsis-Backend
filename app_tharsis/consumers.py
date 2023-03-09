@@ -29,8 +29,13 @@ class GraphConsumer(WebsocketConsumer):
             self.send(json.dumps({'PPG': randint(0,100),
                                         'oxigeno': randint(0,100),
                                         'BPM' : randint(0,100),
-                                        'aceleracion': randint(0,100),
-                                        'velocidad': randint(0,100),
+                                        'aceleracion1': randint(0,100),
+                                        'aceleracion2': randint(0,100),
+                                        'aceleracion3': randint(0,100),
+                                        'giroscopio1': randint(0,100),
+                                        'giroscopio2': randint(0,100),
+                                        'giroscopio3': randint(0,100),
+
                                         }))
             
             #if len(data_bluetooth) >1:
