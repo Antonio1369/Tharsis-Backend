@@ -1,25 +1,33 @@
 // Chart for plot 1
-
-
 var ctx1 = document.getElementById('myChart1').getContext('2d');
 
 var graphData1 = {
     type: 'line',
     data: {
-        labels: ['0','10','20','30','40','50'],
+        labels: Array(50).fill(''),
         datasets: [{
-            label: 'ECG THARSIS',
-            data: [12, 19, 3, 5, 2, 3],
+            label: 'ECG TRHARSIS',
+            data: Array(50).fill(0),
             backgroundColor: [
-                'rgba(100,55,5,0.5)'
+                'rgba(255, 99, 132, 0.2)'
             ],
-            borderColor: "#0F00FF",
+            borderColor: [
+                'rgba(255, 99, 132, 1)', // modify this to change the line color
+            ],
             borderWidth: 3
         }]
     },
-      options: {}
-}
-    
+    options: {
+        scales: {
+            xAxes: [{
+                ticks: {
+                    display: false // hide x-axis labels
+                }
+            }]
+        }
+    }
+
+};
 
 
 var myChart1 = new Chart(ctx1, graphData1);
@@ -30,10 +38,10 @@ var ctx2 = document.getElementById('myChart2').getContext('2d');
 var graphData2 = {
     type: 'line',
     data: {
-        labels: ['0','10','20','30','40','50'],
+        labels: Array(50).fill(''),
         datasets: [{
             label: 'OXIGENACION',
-            data: [5, 10, 8, 15, 25, 20],
+            data: Array(50).fill(0),
             backgroundColor: [
                 'rgba(100,149,237,0.5)'
             ],
@@ -41,7 +49,15 @@ var graphData2 = {
             borderWidth: 3
         }]
     },
-    options: {}
+    options: {
+        scales: {
+            xAxes: [{
+                ticks: {
+                    display: false // hide x-axis labels
+                }
+            }]
+        }
+    }
 }
 
 var myChart2 = new Chart(ctx2, graphData2);
@@ -49,10 +65,14 @@ var myChart2 = new Chart(ctx2, graphData2);
 // WebSocket code
 var socket = new WebSocket('ws://localhost:8000/ws/graph/');
 
+// variable globar para giroscopio
+var lastGiroscopioUpdate = 0;
+var lastPMedicosUpdate = 0;
+
+
 socket.onmessage = function (e) {
     var djangoData = JSON.parse(e.data);
     console.log(djangoData);
-
 
     // Modify dataset for plot 1
     var newGraphData1 = graphData1.data.datasets[0].data;
@@ -60,6 +80,14 @@ socket.onmessage = function (e) {
     newGraphData1.push(djangoData.PPG);
 
     graphData1.data.datasets[0].data = newGraphData1;
+
+    // Modify labels for plot 1
+    var newLabels1 = graphData1.data.labels;
+    newLabels1.shift();
+    newLabels1.push(new Date().toLocaleTimeString()); // add current time to labels array
+
+    graphData1.data.labels = newLabels1;
+
     myChart1.update();
 
     // Modify dataset for plot 2
@@ -68,18 +96,38 @@ socket.onmessage = function (e) {
     newGraphData2.push(djangoData.PPG * 2);
 
     graphData2.data.datasets[0].data = newGraphData2;
+
+    // Modify labels for plot 2
+    var newLabels2 = graphData2.data.labels;
+    newLabels2.shift();
+    newLabels2.push(new Date().toLocaleTimeString()); // add current time to labels array
+
+    graphData2.data.labels = newLabels2;
+
     myChart2.update();
-    document.querySelector('#PPG').innerText = djangoData.PPG;
-    document.querySelector('#oxigeno').innerText = djangoData.oxigeno;
-    document.querySelector('#BPM').innerText = djangoData.BPM;
-    document.querySelector('#giroscopio1').innerText = djangoData.giroscopio1;
-    document.querySelector('#giroscopio2').innerText = djangoData.giroscopio2;
-    document.querySelector('#giroscopio3').innerText = djangoData.giroscopio3;
-    document.querySelector('#aceleracion1').innerText = djangoData.aceleracion1;
-    document.querySelector('#aceleracion2').innerText = djangoData.aceleracion2;
-    document.querySelector('#aceleracion3').innerText = djangoData.aceleracion3;
+
+    // Update HTML elements with real-time data
 
 
+
+    // Update giroscopio data every 2 seconds
+    var currentTimestamp = new Date().getTime();
+    if (!lastGiroscopioUpdate || currentTimestamp - lastGiroscopioUpdate >= 1000) {
+        lastGiroscopioUpdate = currentTimestamp;
+        document.querySelector('#aceleracion1').innerText = djangoData.aceleracion1;
+        document.querySelector('#aceleracion2').innerText = djangoData.aceleracion2;
+        document.querySelector('#aceleracion3').innerText = djangoData.aceleracion3;
+        document.querySelector('#giroscopio1').innerText = djangoData.giroscopio1;
+        document.querySelector('#giroscopio2').innerText = djangoData.giroscopio2;
+        document.querySelector('#giroscopio3').innerText = djangoData.giroscopio3;
+    }
+    if (!lastPMedicosUpdate || currentTimestamp - lastPMedicosUpdate >= 1000) {
+        lastPMedicosUpdate = currentTimestamp;
+        document.querySelector('#PPG').innerText = djangoData.PPG;
+        document.querySelector('#oxigeno').innerText = djangoData.oxigeno;
+        document.querySelector('#BPM').innerText = djangoData.BPM;
+    }
 
 
 }
+

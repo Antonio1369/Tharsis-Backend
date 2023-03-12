@@ -19,8 +19,8 @@ class GraphConsumer(WebsocketConsumer):
             #data_bluetooth = data_bluetooth.decode().split(",")
             #print(data_bluetooth)
             #print(len(data_bluetooth))
-            
-            
+
+
             #SERIAL PROCESSING
             #data_serial = ser.read_data()
 
@@ -37,11 +37,10 @@ class GraphConsumer(WebsocketConsumer):
                                         'giroscopio3': randint(0,100),
 
                                         }))
-            
+
             #if len(data_bluetooth) >1:
             #    await self.send(json.dumps({'value': float(data_bluetooth[1])}))
-        
-            sleep(1)
-        
 
-        
+            sleep(0.08)
+
+
