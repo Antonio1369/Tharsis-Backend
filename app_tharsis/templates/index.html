@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src='https://cdn.plot.ly/plotly-2.18.2.min.js'></script>
+
     <!-- ========== Title ========== -->
     <title> Dashboard Tharsis</title>
     <!-- ========== Favicon Ico ========== -->
@@ -417,7 +419,17 @@
                         <div class="project-title">
                             <label style="font-weight: bolder;color: var(--title-projects);font-size: 120%; ">Rover Position</label>
                         </div>
-                        
+                            <div id='myDiv' class='myScriptContainer'>
+                                    <script type="module" src="{% static 'script.js' %}" width ="30"></script>
+                            </div>
+                            <style>
+                              .myScriptContainer {
+                                 width: 10px;
+                                 height: 10px;
+                              }
+                            </style>
+
+
                     </div>
                 </div>
             </div>
@@ -426,6 +438,8 @@
         </div>
         </div>
     </div>
+
+
 </body>
     <script src="{% static 'main.js' %}"></script>
 
