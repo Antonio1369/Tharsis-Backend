@@ -69,6 +69,26 @@ var socket = new WebSocket('ws://localhost:8000/ws/graph/');
 var lastGiroscopioUpdate = 0;
 var lastPMedicosUpdate = 0;
 
+//giroscopio 3d
+import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+
+const container = document.getElementById('rover');
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize( 40, 40);
+
+//renderer.setSize( window.innerWidth, window.innerHeight );
+container.appendChild( renderer.domElement );
+
+const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+const cube = new THREE.Mesh( geometry, material );
+scene.add( cube );
+
+camera.position.z = 5;
 
 socket.onmessage = function (e) {
     var djangoData = JSON.parse(e.data);
@@ -120,6 +140,9 @@ socket.onmessage = function (e) {
         document.querySelector('#giroscopio1').innerText = djangoData.giroscopio1;
         document.querySelector('#giroscopio2').innerText = djangoData.giroscopio2;
         document.querySelector('#giroscopio3').innerText = djangoData.giroscopio3;
+        cube.rotation.x = djangoData.giroscopio1;
+        cube.rotation.y = djangoData.giroscopio2;
+        cube.rotation.z = djangoData.giroscopio3;
     }
     if (!lastPMedicosUpdate || currentTimestamp - lastPMedicosUpdate >= 1000) {
         lastPMedicosUpdate = currentTimestamp;
@@ -130,4 +153,11 @@ socket.onmessage = function (e) {
 
 
 }
+
+function animate() {
+	requestAnimationFrame( animate );
+	renderer.render( scene, camera );
+}
+animate();
+
 
