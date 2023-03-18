@@ -78,17 +78,25 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize( 40, 40);
+renderer.setSize( container.offsetWidth, container.offsetWidth);
 
 //renderer.setSize( window.innerWidth, window.innerHeight );
 container.appendChild( renderer.domElement );
 
-const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-const cube = new THREE.Mesh( geometry, material );
-scene.add( cube );
+// Create the car geometry
+const carGeometry = new THREE.BoxGeometry(2, 1, 1);
+
+// Create the car material
+const carMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+
+// Combine the geometry and material into a Mesh object
+const car = new THREE.Mesh(carGeometry, carMaterial);
+
+// Add the car to the scene
+scene.add(car);
 
 camera.position.z = 5;
+
 
 socket.onmessage = function (e) {
     var djangoData = JSON.parse(e.data);
@@ -140,9 +148,9 @@ socket.onmessage = function (e) {
         document.querySelector('#giroscopio1').innerText = djangoData.giroscopio1;
         document.querySelector('#giroscopio2').innerText = djangoData.giroscopio2;
         document.querySelector('#giroscopio3').innerText = djangoData.giroscopio3;
-        cube.rotation.x = djangoData.giroscopio1;
-        cube.rotation.y = djangoData.giroscopio2;
-        cube.rotation.z = djangoData.giroscopio3;
+        car.rotation.x = djangoData.giroscopio1;
+        car.rotation.y = djangoData.giroscopio2;
+        car.rotation.z = djangoData.giroscopio3;
     }
     if (!lastPMedicosUpdate || currentTimestamp - lastPMedicosUpdate >= 1000) {
         lastPMedicosUpdate = currentTimestamp;
