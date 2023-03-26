@@ -8,7 +8,7 @@ from django.shortcuts import render
 # Create your views here.
 
 def index(request):
-    return render(request, 'base.html', context={'text': 'Hola mundo'})
+    return render(request, 'index.html', context={'text': 'Hola mundo'})
 
 def data_view(request):
     # iniciar las tareas de Celery
