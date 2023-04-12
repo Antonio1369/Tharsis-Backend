@@ -3,7 +3,7 @@ import json
 from random import randint
 from time import sleep
 from asyncio import sleep
-from app_tharsis.data_manager import BluetoothManager, SerialManager, PinManager
+#from app_tharsis.data_manager import BluetoothManager, SerialManager, PinManager
 
 
 class GraphConsumer(AsyncWebsocketConsumer):

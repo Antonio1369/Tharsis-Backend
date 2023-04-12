@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from app_tharsis.tasks import bluetooth_task, serial_task, pin_task
+#from app_tharsis.tasks import bluetooth_task, serial_task, pin_task
 import paho.mqtt.publish as publish
 from django.shortcuts import render
 
