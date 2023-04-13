@@ -62,8 +62,10 @@ var graphData2 = {
 
 var myChart2 = new Chart(ctx2, graphData2);
 
-// WebSocket code
-var socket = new WebSocket('ws://192.168.0.108:8000/ws/graph/');
+// WebSocket code coolocar la ip para una conexion local
+
+//var socket = new WebSocket('ws://192.168.1.39:8000/ws/graph/');
+var socket = new WebSocket('ws://localhost:8000/ws/graph/');
 
 // variable globar para giroscopio
 var lastGiroscopioUpdate = 0;

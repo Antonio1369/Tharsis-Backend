@@ -1,9 +1,9 @@
 import serial
 import bluetooth
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 import paho.mqtt.publish as publish
-from app_tharsis.mpu_acelerometer import MPU6050
-import smbus
+#from app_tharsis.mpu_acelerometer import MPU6050
+#import smbus
 
 class BluetoothManager:
     def __init__(self, address):
@@ -45,4 +45,33 @@ class PinManager:
         # publicar los datos en el tema MQTT
         #publish.single(self.mqtt_topic, payload=data, hostname="broker.example.com")
 
+class IntelCamera:
+    def __init__(self):
+        self.pipeline = rs.pipeline()
+        self.config = rs.config()
+        self.config.enable_stream(rs.stream.pose)
+        self.pipeline.start(self.config)
+
+    def get_orientation(self):
+        frames = self.pipeline.wait_for_frames()
+        pose = frames.get_pose_frame()
+        if pose:
+            data = pose.get_pose_data()
+            orientation = [data.rotation.x, data.rotation.y, data.rotation.z, data.rotation.w]
+            return orientation
+        else:
+            return None
+
+    def get_position(self):
+        frames = self.pipeline.wait_for_frames()
+        pose = frames.get_pose_frame()
+        if pose:
+            data = pose.get_pose_data()
+            position = [data.translation.x, data.translation.y, data.translation.z]
+            return position
+        else:
+            return None
+
+    def __del__(self):
+        self.pipeline.stop()
 
