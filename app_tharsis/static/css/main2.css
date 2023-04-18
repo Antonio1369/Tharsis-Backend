@@ -387,3 +387,29 @@ a {
     }
     /*Iconos*/
 
+/*Iniciando el video*/
+
+
+.space1 {
+  height: 70vh;
+  width: 100%; /* ajusta el ancho al 100% */
+  display: inline-block; /* muestra los elementos en línea */
+  background:var(--white);
+  margin: .5rem 1rem;
+  border-radius:9px;
+  padding: 1rem;
+  transition:.5s;
+  box-shadow: 0px 15px 25px
+  rgba(0,0,0,0.40);
+}
+.col {
+  width: 50%; /* ajusta el ancho al 50% */
+  float: left; /* flota el elemento a la izquierda */
+}
+
+.project-image p {
+  font-size: 2em;
+}
+.project-image h3 {
+  font-size: 2.2em;
+}

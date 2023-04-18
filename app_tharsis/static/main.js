@@ -65,6 +65,26 @@ var myChart2 = new Chart(ctx2, graphData2);
 // WebSocket code
 var socket = new WebSocket('ws://localhost:8000/ws/graph/');
 
+// Camaras en accion
+const video = document.getElementById('video-stream');
+const wsUrl = `ws://${window.location.host}/ws/video/`;
+
+const ws = new WebSocket(wsUrl);
+
+ws.binaryType = 'arraybuffer';
+
+ws.onmessage = (event) => {
+    const bytes = new Uint8Array(event.data);
+    const blob = new Blob([bytes], { type: 'image/jpeg' });
+    const urlCreator = window.URL || window.webkitURL;
+    const imageUrl = urlCreator.createObjectURL(blob);
+    video.src = imageUrl;
+};
+
+ws.onclose = () => {
+    console.log('WebSocket connection closed');
+};
+
 // variable globar para giroscopio
 var lastGiroscopioUpdate = 0;
 var lastPMedicosUpdate = 0;
@@ -87,12 +107,25 @@ container.appendChild( renderer.domElement );
 const carGeometry = new THREE.BoxGeometry(2, 1, 1);
 
 // Create the car material
-const carMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+//const carMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+const carMaterial = new THREE.MeshPhongMaterial({
+  color: 0xff0000, // Color rojo
+  specular: 0xffffff, // Color blanco para los bordes
+  shininess: 100 // Brillo de los bordes
+});
+
 
 // Combine the geometry and material into a Mesh object
 const car = new THREE.Mesh(carGeometry, carMaterial);
 
 // Add the car to the scene
+car.position.z = -5;
+car.scale.set(3, 3, 3);
+
+const light = new THREE.PointLight(0xffffff, 1);
+light.position.set(0, 0, 5);
+scene.add(light);
+
 scene.add(car);
 
 camera.position.z = 5;

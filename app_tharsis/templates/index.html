@@ -381,9 +381,27 @@
         </div>
         <div class="page-section" id="Stream">
             <div class="row">
-            <div class="space" style="height: 70vh;">
-                <iframe width="100%" style="height: 68vh;" src="https://www.youtube.com/embed/qbRcr4i7mKc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
+            
+                <div class="col">
+                    <div class="space1">
+                        <video id="video-stream" autoplay></video>
+
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/qbRcr4i7mKc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="space1">
+                        <video id="video-stream" autoplay></video>
+
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/qbRcr4i7mKc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                    </div>
+                </div>
+
+
+            
             <div class="project-item2">
                 <div class="space">
                     <div class="project-box">
@@ -393,8 +411,8 @@
                         <div class="project-content two">
                             <div style="width: 110%;">
                             <div class="project-image">
+                                <br><br><br>
                                 <h3>GYROSCOPE</h3>
-
                                     <p>X: <span id="giroscopio1" style="display: inline-block;">{{ text }}</span> rad/s</p>
                                     <p>Y: <span id="giroscopio2" style="display: inline-block;">{{ text }}</span> rad/s</p>
                                     <p>Z: <span id="giroscopio3" style="display: inline-block;">{{ text }}</span> rad/s</p>
@@ -403,6 +421,7 @@
                         </div>
                         <div  style="width: 110%;">
                             <div class="project-image" >
+                                <br><br><br>
                                 <h3>ACCELEROMETER</h3>
                                     <p>X: <span id="aceleracion1" style="display: inline-block;">{{ text }}</span> m/s2</p>
                                     <p>Y: <span id="aceleracion2" style="display: inline-block;">{{ text }}</span> m/s2</p>
