@@ -5,7 +5,7 @@ import struct
 
 # bind all IP
 # THARSIS/HOST = '192.168.0.101'
-HOST = '192.168.0.105'
+HOST = '192.168.1.206'
 # 
 # Listen on Port
 PORT = 4210
@@ -16,11 +16,11 @@ s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 # Bind the socket to the host and port
 
 # THARSIS :UDP_IP = '192.168.0.108' # The IP that is printed in the serial monitor from the ESP32
-UDP_IP = '192.168.0.165' # The IP that is printed in the serial monitor from the ESP32
+#UDP_IP = '192.168.1.206' # The IP that is printed in the serial monitor from the ESP32
 
 SHARED_UDP_PORT = 4210
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # Internet  # UDP
-sock.connect((UDP_IP, SHARED_UDP_PORT))
+#sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # Internet  # UDP
+#sock.connect((UDP_IP, SHARED_UDP_PORT))
 
 CHUNK = 4096
 WIDTH = 2
