@@ -1,23 +1,32 @@
 import serial
 import bluetooth
+import numpy as np
 #import RPi.GPIO as GPIO
-import paho.mqtt.publish as publish
 #from app_tharsis.mpu_acelerometer import MPU6050
 #import smbus
 
 class BluetoothManager:
     def __init__(self, address):
         self.address = address
+        self.sock = None
         #self.mqtt_topic = mqtt_topic
 
     def read_data(self):
         sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-        sock.connect((self.address, 1))
-        data = sock.recv(1024)
+        #sock.connect((self.address, 1))
+        #data = sock.recv(1024)
         #sock.close()
-        return data
-        # publicar los datos en el tema MQTT
-        #publish.single(self.mqtt_topic, payload=data, hostname="broker.example.com")
+        if self.sock is None:
+            
+            #print("Error de conexión: ")
+            self.sock = None  # restablecer el socket para intentar reconectar
+            data = np.random.randint(0, 100, size=6)  # generar un vector de valores aleatorios
+            return data
+        else:
+            self.sock.connect((self.address, 1))
+            data = self.sock.recv(1024)
+            return(data)
+
 
 class SerialManager:
     def __init__(self, port, baud_rate, byte_size, paridad, stop_bits):
@@ -45,33 +54,23 @@ class PinManager:
         # publicar los datos en el tema MQTT
         #publish.single(self.mqtt_topic, payload=data, hostname="broker.example.com")
 
-class IntelCamera:
+class T265Manager:
     def __init__(self):
         self.pipeline = rs.pipeline()
         self.config = rs.config()
         self.config.enable_stream(rs.stream.pose)
         self.pipeline.start(self.config)
 
-    def get_orientation(self):
-        frames = self.pipeline.wait_for_frames()
-        pose = frames.get_pose_frame()
-        if pose:
-            data = pose.get_pose_data()
-            orientation = [data.rotation.x, data.rotation.y, data.rotation.z, data.rotation.w]
-            return orientation
-        else:
-            return None
-
-    def get_position(self):
-        frames = self.pipeline.wait_for_frames()
-        pose = frames.get_pose_frame()
-        if pose:
-            data = pose.get_pose_data()
-            position = [data.translation.x, data.translation.y, data.translation.z]
-            return position
-        else:
-            return None
-
-    def __del__(self):
-        self.pipeline.stop()
-
+    def read_data(self):
+        while True:
+            try:
+                frames = self.pipeline.wait_for_frames()
+                pose = frames.get_pose_frame()
+                if pose:
+                    data = pose.get_pose_data()
+                    position = data.translation
+                    orientation = data.rotation
+                    return position, orientation
+            except Exception as e:
+                print("Error de lectura en la camara: ", e)
+                continue

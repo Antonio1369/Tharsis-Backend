@@ -3,6 +3,7 @@ import json
 from random import randint
 from time import sleep
 from asyncio import sleep
+import numpy as np
 #from app_tharsis.data_manager import BluetoothManager, SerialManager, PinManager
 from app_tharsis.data_manager import BluetoothManager
 
@@ -18,9 +19,14 @@ class GraphConsumer(AsyncWebsocketConsumer):
 
             #BLUETOOTH PROCESSING
             data_bluetooth = bt.read_data()
-            data_bluetooth = data_bluetooth.decode().split(",")
-            print(data_bluetooth)
-            print(len(data_bluetooth))
+            #print(type(data_bluetooth))
+            #print(data_bluetooth)
+            if isinstance(data_bluetooth, np.ndarray):
+                data_bluetooth = data_bluetooth.tolist()
+                #print(data_bluetooth)
+            else:
+                data_bluetooth =data_bluetooth.decode().split(",")
+
             
             
             #SERIAL PROCESSING

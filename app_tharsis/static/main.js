@@ -89,8 +89,13 @@ container.appendChild( renderer.domElement );
 const carGeometry = new THREE.BoxGeometry(2, 1, 1);
 
 // Create the car material
-const carMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-
+//const carMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+const carMaterial = new THREE.MeshPhongMaterial({
+    color: 0xff0000, // Color rojo
+    specular: 0xffffff, // Color blanco para los bordes
+    shininess: 100 // Brillo de los bordes
+  });
+  
 // Combine the geometry and material into a Mesh object
 const car = new THREE.Mesh(carGeometry, carMaterial);
 
@@ -98,11 +103,17 @@ const car = new THREE.Mesh(carGeometry, carMaterial);
 scene.add(car);
 
 camera.position.z = 5;
+car.position.z = -5;
+car.scale.set(3, 3, 3);
+
+const light = new THREE.PointLight(0xffffff, 1);
+light.position.set(0, 0, 5);
+scene.add(light);
 
 
 socket.onmessage = function (e) {
     var djangoData = JSON.parse(e.data);
-    console.log(djangoData);
+    //console.log(djangoData);
 
     // Modify dataset for plot 1
     var newGraphData1 = graphData1.data.datasets[0].data;
